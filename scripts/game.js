@@ -1,6 +1,7 @@
-var stage = new PIXI.Stage(0x000000);
 // Renderer is 1024x640
 var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+var stage;
+
 
 // allow renderer to fill screen
 renderer.view.style.display = "block";
@@ -13,18 +14,13 @@ var bottomleftsquare;
 var bottomrightsquare;
 
 function loadMenu() {
-    //postion background at center
-    homeBackgroundSprite.anchor.x = 0.5;
-    homeBackgroundSprite.anchor.y = 0.5;
-    homeBackgroundSprite.position.x = window.innerWidth/2;
-    homeBackgroundSprite.position.y = window.innerHeight/2;
+	stage = new PIXI.Stage(0x000000);
 
-
-    //postion start button at center
-    startButtonSprite.anchor.x = 0.5;
-    startButtonSprite.anchor.y = 0.5;
-    startButtonSprite.position.x = window.innerWidth/2;
-    startButtonSprite.position.y = window.innerHeight/2;
+    // Make start button clickable
+    startButtonSprite.interactive = true;
+    startButtonSprite.click = function(mouseData) {
+    	loadGame();
+    }
 
     //add the sprites to stage;
     stage.addChild(homeBackgroundSprite);
@@ -42,7 +38,9 @@ function loadMenu() {
 }
 
 function loadGame() {
-	
+	stage = new PIXI.Stage(0x000000);
+
+	stage.addChild(gameBackgroundSprite);
 }
 
 function load() {
@@ -53,14 +51,13 @@ function load() {
 	//intialize Sprites
 	initSprites();
 
-	loadMenu();
+    loadMenu();
 
     // Removes the "loading..." text
     document.getElementById("loading").remove();
     document.body.appendChild(renderer.view);
 
-	// Gets an anim frame, equalviant to render method
-	setTimeout(animate, 1000 / 60);
+    animate();
 }
 
 function animate() {
@@ -68,7 +65,7 @@ function animate() {
 	setTimeout(animate, 1000 / 60);
 
 	square.rotation += 0.1;
-	endsquare.rotation +=0.1;
+	endsquare.rotation += 0.1;
 	bottomleftsquare.rotation += 0.1;
 	bottomrightsquare.rotation += 0.1;
 
