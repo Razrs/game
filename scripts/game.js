@@ -1,6 +1,6 @@
 var stage = new PIXI.Stage(0x000000);
 // Renderer is 1024x640
-var renderer = new PIXI.autoDetectRenderer(1024, 640);
+var renderer = new PIXI.autoDetectRenderer(800, 600);
 
 // allow renderer to fill screen
 renderer.view.style.display = "block";
@@ -19,6 +19,8 @@ function load() {
 	
 	//intialize Sprites
 	initSprites();
+
+    stage.addChild(homeBackgroundSprite);
 
 	square = newSquare();
 	stage.addChild(square);
