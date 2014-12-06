@@ -1,4 +1,4 @@
-game
+PhyGame
 ====
 1. See a set of Instructions on how to play and give credits to Koding for the initiative. Talk about the aim of the game as a way to challenge the thinking of students and also encourage practical applications of physics in our day-to-day activities.
 
