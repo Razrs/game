@@ -11,4 +11,6 @@ function initSprites(){
     homeBackgroundSprite.anchor.y = 0.5;
     
     startButtonSprite = PIXI.Sprite.fromImage("assets/textures/start_button.png");
+    startButtonSprite.anchor.x = 0.5;
+    startButtonSprite.anchor.y = 0.5;
 }
