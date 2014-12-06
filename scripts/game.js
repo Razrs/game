@@ -56,6 +56,7 @@ function load() {
     // Removes the "loading..." text
     document.getElementById("loading").remove();
     document.body.appendChild(renderer.view);
+    console.log("Done loading!");
 
     animate();
 }
