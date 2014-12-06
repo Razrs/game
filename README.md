@@ -31,5 +31,3 @@ game
 
 Amendments and suggestions are welcome.
 
-
-game stuff
