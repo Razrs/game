@@ -2,6 +2,8 @@ var stage = new PIXI.Stage(0x000000);
 // Renderer is 640x480
 var renderer = new PIXI.autoDetectRenderer(640, 480);
 
+var square;
+
 
 function load() {
 	// Add the element to body
@@ -9,21 +11,21 @@ function load() {
 
 	initTextures();
 
-	var square = newSquare();
+	square = newSquare();
 	stage.addChild(square);
 
 	// Gets an anim frame, equalviant to render method
-	requestAnimFrame(animate);
+	setTimeout(animate, 1000 / 60);
+}
 
-	function animate() {
-		// Recursion to keep rendering
-		requestAnimFrame(animate);
+function animate() {
+	// Recursion to keep rendering
+	setTimeout(animate, 1000 / 60);
 
-		square.rotation += 0.1;
+	square.rotation += 0.1;
 
-		// Render to the stage
-		renderer.render(stage);
-	}
+	// Render to the stage
+	renderer.render(stage);
 }
 
 function newSquare() {
