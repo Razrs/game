@@ -30,8 +30,10 @@ function animate() {
 
 function newSquare() {
 	var square = new PIXI.Sprite(textureSquare);
-	square.anchor.x = 0;
-	square.anchor.y = 0;
+	// anchor is % not pixels, so 0.5 is center
+	square.anchor.x = 0.5;
+	square.anchor.y = 0.5;
+
 	square.position.x = 0;
 	square.position.y = 0;
 
