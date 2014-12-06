@@ -1,5 +1,5 @@
 var homeBackgroundSprite;
 
 Function initSprites(){
-    homeBackgroundSprite =   PIXI.Sprite.fromImage("assets/bg/background.png");  
+    homeBackgroundSprite =   PIXI.Sprite.fromImage("assets/textures/start_background.png");  
 }
