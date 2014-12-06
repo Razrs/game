@@ -22,9 +22,15 @@ function loadMenu() {
  		loadGame();
     }
 
+	scoreboardButtonSprite.interactive = true;
+	scoreboardButtonSprite.click = function(mouseData) {
+		loadScoreboard();
+	}
+
     //add the sprites to stage;
     stage.addChild(homeBackgroundSprite);
     stage.addChild(startButtonSprite);
+	stage.addChild(scoreboardButtonSprite);
 
 	endsquare = newSquare(window.innerWidth - 3, 0);
 	square = newSquare(0, 0);
@@ -41,6 +47,10 @@ function loadGame() {
 	stage = new PIXI.Stage(0x000000);
 
 	stage.addChild(gameBackgroundSprite);
+}
+
+function loadScoreboard() {
+	stage = new PIXI.Stage(0x7ec0ee)
 }
 
 function load() {
@@ -71,16 +81,4 @@ function animate() {
 	renderer.render(stage);
 
 	requestAnimFrame(animate);
-}
-
-function newSquare(x, y) {
-	var square = new PIXI.Sprite(textureSquare);
-	// anchor is % not pixels, so 0.5 is center
-	square.anchor.x = 0.5;
-	square.anchor.y = 0.5;
-
-	square.position.x = x;
-	square.position.y = y;
-
-	return square;
 }

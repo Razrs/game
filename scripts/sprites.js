@@ -1,5 +1,6 @@
 var homeBackgroundSprite;
 var startButtonSprite;
+var scoreboardButtonSprite;
 var gameBackgroundSprite;
 
 function initSprites(){
@@ -18,6 +19,13 @@ function initSprites(){
     startButtonSprite.position.x = renderer.width/2;
     startButtonSprite.position.y = renderer.height/2;
 
+    scoreboardButtonSprite = PIXI.Sprite.fromImage("assets/textures/scoreboard_button.png");
+    scoreboardButtonSprite.anchor.x = 0.5;
+    scoreboardButtonSprite.anchor.y = 0.5;
+    scoreboardButtonSprite.position.x = renderer.width/2;
+    scoreboardButtonSprite.position.y = renderer.height/2 + scoreboardButtonSprite.height + 10;
+
+
     //Load background for game
     gameBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/game_background.png");
     gameBackgroundSprite.width = renderer.width;
@@ -26,4 +34,16 @@ function initSprites(){
     gameBackgroundSprite.anchor.y = 0.5;
     gameBackgroundSprite.position.x = renderer.width/2;
     gameBackgroundSprite.position.y = renderer.height/2;
+}
+
+function newSquare(x, y) {
+	var square = new PIXI.Sprite(textureSquare);
+	// anchor is % not pixels, so 0.5 is center
+	square.anchor.x = 0.5;
+	square.anchor.y = 0.5;
+
+	square.position.x = x;
+	square.position.y = y;
+
+	return square;
 }
