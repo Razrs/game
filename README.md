@@ -6,11 +6,10 @@ PhyGame
 
 3. The first stage of the game, 
   1. The player sees a tag name on the player e.g   Force
-		    																					   +++__+++
-    -- To complete it within 2 seconds, he needs to choose an quantity that       
-        best completes the equation e.g pick "acceleration" given   Mass
-																																   ++__++
-        on the other side. Time taken to answer matters and gives you an edge 	
+    **+++__+++**
+    1. To complete it within 2 seconds, he needs to choose an quantity that best completes the equation e.g pick "acceleration" given   Mass 
+    **++__++**
+     on the other side. Time taken to answer matters and gives you an edge 	
        in the final rank table;
      The loop continues with movement of equations on both sides (animated) 
      and a question mark(?) to denote the missing element to complete the   
