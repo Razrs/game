@@ -22,8 +22,14 @@ function load() {
     
     
     //postion start button at center
+    startButtonSprite.hitArea = new PIXI.Rectangle(window.innerWidth / 2 - startButtonSprite.width / 2,
+    	window.innerHeight / 2 - startButtonSprite.height / 2, startButtonSprite.width, startButtonSprite.height);
+    startButtonSprite.interactive = true;
     startButtonSprite.position.x = window.innerWidth / 2;
     startButtonSprite.position.y = window.innerHeight / 2;
+    startButtonSprite.click = function(mouseData) {
+    	console.log(mouseData);
+    };
     
     //add the sprites to stage;
     stage.addChild(homeBackgroundSprite);
