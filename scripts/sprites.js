@@ -19,7 +19,7 @@ function initSprites(){
     startButtonSprite.position.y = renderer.height/2;
 
     //Load background for game
-    gameBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/coolgameplaybground.jpg");
+    gameBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/game_background.png");
     gameBackgroundSprite.width = renderer.width;
     gameBackgroundSprite.height = renderer.height;
     gameBackgroundSprite.anchor.x = 0.5;

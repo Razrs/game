@@ -19,7 +19,7 @@ function loadMenu() {
     // Make start button clickable
     startButtonSprite.interactive = true;
     startButtonSprite.click = function(mouseData) {
-    	loadGame();
+ 		loadGame();
     }
 
     //add the sprites to stage;
@@ -62,9 +62,6 @@ function load() {
 }
 
 function animate() {
-	// Recursion to keep rendering
-	setTimeout(animate, 1000 / 60);
-
 	square.rotation += 0.1;
 	endsquare.rotation += 0.1;
 	bottomleftsquare.rotation += 0.1;
@@ -72,6 +69,8 @@ function animate() {
 
 	// Render to the stage
 	renderer.render(stage);
+
+	requestAnimFrame(animate);
 }
 
 function newSquare(x, y) {
