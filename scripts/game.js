@@ -12,8 +12,8 @@ var update;
 function loadMenu() {
 	stage = new PIXI.Stage(0x000000);
 
-	scoreboardButtonSprite = scoreboardButton();
-    startButtonSprite = startButton();
+	var scoreboardButtonSprite = scoreboardButton();
+    var startButtonSprite = startButton();
 
     // Make start button clickable
 
@@ -25,8 +25,8 @@ function loadMenu() {
     
     startButtonSprite.interactive = true;
     startButtonSprite.click = function(mouseData) {
-    	stage.removeChildren();
-	 	loadGame();
+        stage.removeChildren();
+        loadGame();
     };
 
     //add the sprites to stage;
