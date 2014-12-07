@@ -8,30 +8,28 @@ renderer.view.style.display = "block";
 // renderer.view.style.height = "100%"
 
 var update;
-var clicked = false;
 
 function loadMenu() {
 	stage = new PIXI.Stage(0x000000);
 
+	startButtonSprite = startButton();
+	scoreboardButtonSprite = scoreboardButton();
+
     // Make start button clickable
     startButtonSprite.interactive = true;
     startButtonSprite.click = function(mouseData) {
-    	if (!clicked) {
-	 		loadGame();
- 			clicked = true;
- 		}
+    	stage.removeChildren();
+	 	loadGame();
     }
 
 	scoreboardButtonSprite.interactive = true;
 	scoreboardButtonSprite.click = function(mouseData) {
-		if (!clicked) {
-			loadScoreboard();
-			clicked = true;
-		}
+		stage.removeChildren();
+		loadScoreboard();
 	}
 
     //add the sprites to stage;
-    stage.addChild(homeBackgroundSprite);
+    stage.addChild(menuBackground());
     stage.addChild(startButtonSprite);
 	stage.addChild(scoreboardButtonSprite);
 
@@ -60,16 +58,15 @@ function loadGame() {
 
 	ringLeft = newRing(fourthWidth, renderer.height / 2);
 
-	stage.addChild(gameBackgroundSprite);
+	stage.addChild(gameBackground());
 	stage.addChild(ringLeft);
 
 	update = function() {
-
+		// ringLeft.rotation += 0.1;
 	}
 }
 
 function loadScoreboard() {
-	console.log(stage.removeChildren());
 	stage = new PIXI.Stage(0x7ec0ee);
 }
 
@@ -86,9 +83,6 @@ function load() {
 	// Add the element to body
     //initialize textures
 	initTextures();
-
-	//intialize Sprites
-	initSprites();
 
     loadMenu();
 
