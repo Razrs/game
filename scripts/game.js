@@ -12,21 +12,22 @@ var update;
 function loadMenu() {
 	stage = new PIXI.Stage(0x000000);
 
-	startButtonSprite = startButton();
 	scoreboardButtonSprite = scoreboardButton();
+    startButtonSprite = startButton();
 
     // Make start button clickable
-    startButtonSprite.interactive = true;
-    startButtonSprite.click = function(mouseData) {
-    	stage.removeChildren();
-	 	loadGame();
-    }
 
 	scoreboardButtonSprite.interactive = true;
 	scoreboardButtonSprite.click = function(mouseData) {
 		stage.removeChildren();
 		loadScoreboard();
-	}
+	};
+    
+    startButtonSprite.interactive = true;
+    startButtonSprite.click = function(mouseData) {
+    	stage.removeChildren();
+	 	loadGame();
+    };
 
     //add the sprites to stage;
     stage.addChild(menuBackground());
@@ -80,10 +81,8 @@ function animate() {
 }
 
 function load() {
-	// Add the element to body
-    //initialize textures
-	initTextures();
-
+    getTextures();
+    
     loadMenu();
 
     // Removes the "loading..." text

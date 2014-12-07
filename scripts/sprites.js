@@ -1,6 +1,6 @@
 
-function gameBackground(){
-    gameBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/game_background.png");
+function gameBackground() {
+    gameBackgroundSprite = new PIXI.Sprite(PIXI.TextureCache["assets/textures/game_background.png"]);
     gameBackgroundSprite.width = renderer.width;
     gameBackgroundSprite.height = renderer.height;
     gameBackgroundSprite.anchor.x = 0.5;
@@ -12,7 +12,7 @@ function gameBackground(){
 }
 
 function menuBackground() {
-	menuBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/start_background.png");
+	menuBackgroundSprite = new PIXI.Sprite(PIXI.TextureCache["assets/textures/start_background.png"]);
     menuBackgroundSprite.width = renderer.width;
     menuBackgroundSprite.height = renderer.height;
     menuBackgroundSprite.anchor.x = 0.5;
@@ -24,7 +24,7 @@ function menuBackground() {
 }
 
 function scoreboardButton() {
-    scoreboardButtonSprite = PIXI.Sprite.fromImage("assets/textures/scoreboard_button.png");
+    scoreboardButtonSprite = new PIXI.Sprite(PIXI.TextureCache["assets/textures/scoreboard_button.png"]);
     scoreboardButtonSprite.anchor.x = 0.5;
     scoreboardButtonSprite.anchor.y = 0.5;
     scoreboardButtonSprite.position.x = renderer.width/2;
@@ -34,7 +34,7 @@ function scoreboardButton() {
 }
 
 function startButton() {
-    startButtonSprite = PIXI.Sprite.fromImage("assets/textures/start_button.png");
+    startButtonSprite = new PIXI.Sprite(PIXI.TextureCache["assets/textures/start_button.png"]);
     startButtonSprite.anchor.x = 0.5;
     startButtonSprite.anchor.y = 0.5;
     startButtonSprite.position.x = renderer.width/2;
