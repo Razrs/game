@@ -25,7 +25,6 @@ function initSprites(){
     scoreboardButtonSprite.position.x = renderer.width/2;
     scoreboardButtonSprite.position.y = renderer.height/2 + scoreboardButtonSprite.height + 10;
 
-
     //Load background for game
     gameBackgroundSprite = PIXI.Sprite.fromImage("assets/textures/game_background.png");
     gameBackgroundSprite.width = renderer.width;
@@ -37,7 +36,7 @@ function initSprites(){
 }
 
 function newSquare(x, y) {
-	var square = new PIXI.Sprite(textureSquare);
+	square = new PIXI.Sprite(textureSquare);
 	// anchor is % not pixels, so 0.5 is center
 	square.anchor.x = 0.5;
 	square.anchor.y = 0.5;
@@ -46,4 +45,24 @@ function newSquare(x, y) {
 	square.position.y = y;
 
 	return square;
+}
+
+function newRing(x, y) {
+	ring = new PIXI.Sprite(textureRing);
+	ring.anchor.x = 0.5;
+	ring.anchor.y = 0.5;
+	ring.position.x = x;
+	ring.position.y = y;
+
+	return ring;
+}
+
+function newSmallRing(x, y) {
+	ring = new PIXI.Sprite(textureRingSmall);
+	ring.anchor.x = 0.5;
+	ring.anchor.y = 0.5;
+	ring.position.x = x;
+	ring.position.y = y;
+
+	return ring;
 }

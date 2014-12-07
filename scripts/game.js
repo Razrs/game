@@ -8,6 +8,7 @@ renderer.view.style.display = "block";
 // renderer.view.style.height = "100%"
 
 var update;
+var clicked = false;
 
 function loadMenu() {
 	stage = new PIXI.Stage(0x000000);
@@ -15,12 +16,18 @@ function loadMenu() {
     // Make start button clickable
     startButtonSprite.interactive = true;
     startButtonSprite.click = function(mouseData) {
- 		loadGame();
+    	if (!clicked) {
+	 		loadGame();
+ 			clicked = true;
+ 		}
     }
 
 	scoreboardButtonSprite.interactive = true;
 	scoreboardButtonSprite.click = function(mouseData) {
-		loadScoreboard();
+		if (!clicked) {
+			loadScoreboard();
+			clicked = true;
+		}
 	}
 
     //add the sprites to stage;
@@ -28,19 +35,19 @@ function loadMenu() {
     stage.addChild(startButtonSprite);
 	stage.addChild(scoreboardButtonSprite);
 
-	endsquare = newSquare(window.innerWidth - 3, 0);
-	square = newSquare(0, 0);
-	bottomleftsquare = newSquare(0, window.innerHeight - 3);
-	bottomrightsquare = newSquare(window.innerWidth - 3, window.innerHeight - 3);
+	topleftsquare = newSquare(0, 0);
+	toprightsquare = newSquare(renderer.width - 3, 0);
+	bottomleftsquare = newSquare(0, renderer.height - 3);
+	bottomrightsquare = newSquare(renderer.width - 3, renderer.height - 3);
 
-	stage.addChild(square);
-	stage.addChild(endsquare);
+	stage.addChild(topleftsquare);
+	stage.addChild(toprightsquare);
 	stage.addChild(bottomrightsquare);
 	stage.addChild(bottomleftsquare);
 
 	update = function() {
-		square.rotation += 0.1;
-		endsquare.rotation += 0.1;
+		topleftsquare.rotation += 0.1;
+		toprightsquare.rotation += 0.1;
 		bottomleftsquare.rotation += 0.1;
 		bottomrightsquare.rotation += 0.1;
 	};
@@ -49,7 +56,12 @@ function loadMenu() {
 function loadGame() {
 	stage = new PIXI.Stage(0x000000);
 
+	fourthWidth = renderer.width / 4;
+
+	ringLeft = newRing(fourthWidth, renderer.height / 2);
+
 	stage.addChild(gameBackgroundSprite);
+	stage.addChild(ringLeft);
 
 	update = function() {
 
@@ -57,6 +69,7 @@ function loadGame() {
 }
 
 function loadScoreboard() {
+	console.log(stage.removeChildren());
 	stage = new PIXI.Stage(0x7ec0ee);
 }
 
@@ -86,3 +99,43 @@ function load() {
 
     animate();
 }
+
+function keyboard(keyCode) {
+	var key = {};
+	key.code = keyCode;
+	key.isDown = false;
+	key.isUp = true;
+	key.press = undefined;
+	key.release = undefined;
+	//The `downHandler`
+	key.downHandler = function(event) {
+		if (event.keyCode === key.code) {
+			if (key.isUp && key.press) {
+				key.press();
+			}
+			key.isDown = true;
+			key.isUp = false;
+		}
+		event.preventDefault();
+	};
+	//The `upHandler`
+	key.upHandler = function(event) {
+		if (event.keyCode === key.code) {
+			if (key.isDown && key.release){
+				key.release();
+			}
+			key.isDown = false;
+			key.isUp = true;
+		}
+		event.preventDefault();
+	};
+	//Attach event listeners
+	window.addEventListener(
+		"keydown", key.downHandler.bind(key), false
+	);
+	window.addEventListener(
+		"keyup", key.upHandler.bind(key), false
+	);
+	return key;
+}
+
